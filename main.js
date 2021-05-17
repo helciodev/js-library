@@ -26,16 +26,30 @@ function MakeBook(title, author, pages, read = false) {
   this.read = read;
 }
 
-function displayBook(book) {
+function renderBtnRead (book, ind) {
+  if(book) {
+    return `<p data-ind="${ind}" class="text-xl cursor-pointer hover:bg-blue-700 p-2" id="toggle-read-yes">Read: ✔</p>`
+  }else {
+    return `<p data-ind="${ind}" class="text-xl cursor-pointer hover:bg-blue-700 p-2" id="toggle-read-no">Read: ❌</p>`
+  }
+}
+
+function displayBook(collection) {
+
+  collection.forEach( function(book, index) {
+
   booksWrapper.insertAdjacentHTML('beforeend',
     `<div class="p-5 border border-white bg-blue-400 text-white font-sans rounded-2xl mt-4 mx-3">
            <p class="text-xl">Title: ${book.title} </p>
            <p class="text-xl p-2">Author: ${book.author}</p>
            <p class="text-xl p-2">Pages: ${book.pages}</p>
-           <p class="text-xl p-2">Read: ${book.read ? '✔' : '❌'} </p>
-           <button data-index="${books.indexOf(book)}" class="bg-red-500 btn-new text-white mx-auto block px-3 py-2 rounded-lg mt-5" id="delete">delete</button>
+           ${renderBtnRead(book.read, index)}
+           <button data-index="${index}" class="bg-red-500 btn-new text-white mx-auto block px-3 py-2 rounded-lg mt-5" id="delete">delete</button>
          </div>`);
+  })
 }
+
+// <p data-ind="${index}" class="text-xl cursor-pointer hover:bg-blue-700 p-2" id="toggle-read">Read: '✔' </p>
 
 function addBookToLibrary(e) {
   e.preventDefault();
@@ -50,7 +64,8 @@ function addBookToLibrary(e) {
   form.reset();
   this.classList.toggle('get-down');
   formParent.classList.toggle('hidden');
-  displayBook(book);
+  booksWrapper.innerHTML ='';
+  displayBook(books);
 }
 
 form.addEventListener('submit', addBookToLibrary);
@@ -61,3 +76,14 @@ window.addEventListener('click', (e) => {
     books.splice(e.target.attributes[0].value, 1);
   }
 });
+
+window.addEventListener('click', (e) =>{
+  if(e.target.id === 'toggle-read-yes'){
+    e.target.innerHTML = `<p data-ind="${e.target.dataset.in}" class="text-xl cursor-pointer hover:bg-blue-700 p-2" id="toggle-read-no">Read: ❌</p>`
+    books[e.target.dataset.ind].read = false
+  }else if(e.target.id === 'toggle-read-no') {
+    e.target.innerHTML = `<p data-ind="${e.target.dataset.in}" class="text-xl cursor-pointer hover:bg-blue-700 p-2" id="toggle-read-no">Read: ✔</p>`
+    books[e.target.dataset.ind].read = true
+  }
+ 
+})
