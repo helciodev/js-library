@@ -4,7 +4,7 @@ const form = document.getElementById('form')
 let inputTitle = document.querySelector('#title');
 let inputAuthor = document.querySelector('#author');
 let inputPages = document.querySelector('#pages');
-let inputDescription = document.querySelector('#description');
+let inputRead = document.querySelector('#read');
 const booksWrapper = document.querySelector("#books")
 let books = []
 let book;
@@ -20,20 +20,21 @@ this.classList.toggle('hidden')
 form.classList.toggle('get-down')
 })
 
-function makeBook(title, author, pages, description){
+function makeBook(title, author, pages, read = false){
    this.title = title
    this.author = author
    this.pages = pages
-   this.description = description
+   this.read = read
  }
 
  function addBookToLibrary(e) {
+
   e.preventDefault()
   book = new makeBook(
     inputTitle.value,
     inputAuthor.value,
     inputPages.value,
-    inputDescription.value
+    inputRead.checked
   )
 
   books.push(book)
@@ -50,13 +51,10 @@ function displayBook(book) {
 
   booksWrapper.insertAdjacentHTML('beforeend',
         `<div class="p-5 border border-white bg-blue-400 text-white font-sans rounded-2xl mt-4 mx-3">
-           <p class="text-xl">title: ${book.title} </p>
-           <p class="text-xl p-2">author: ${book.author}</p>
-           <p class="text-xl p-2">pages: ${book.pages}</p>
-           <p class="text-xl p-2">description: ${book.description} </p>
-           
-           <label for="read">have you read it before</label>
-           <input type="checkbox" name="read" id="read">
+           <p class="text-xl">Title: ${book.title} </p>
+           <p class="text-xl p-2">Author: ${book.author}</p>
+           <p class="text-xl p-2">Pages: ${book.pages}</p>
+           <p class="text-xl p-2">Read: ${book.read? '✔': '❌'} </p>
            <button data-index="${books.indexOf(book)}" class="bg-red-500 btn-new text-white mx-auto block px-3 py-2 rounded-lg mt-5" id="delete">delete</button>
          </div>`
          ) 
