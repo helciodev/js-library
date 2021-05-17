@@ -1,0 +1,18 @@
+.form-parent {
+  background: rgba(0, 0, 0, .3);
+  top: 0;
+  left: 0;
+}
+
+.form {
+  top: -1085px;
+  transition: .8s ease-in-out;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.get-down {
+  top: 50%;
+}
