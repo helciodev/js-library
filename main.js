@@ -43,3 +43,22 @@ function makeBook(title, author, pages, description){
    displayBook(book)
   
 }
+
+form.addEventListener('submit', addBookToLibrary)
+
+function displayBook(book) {
+
+  booksWrapper.insertAdjacentHTML('beforeend',
+        `<div class="p-5 border border-white bg-blue-400 text-white font-sans rounded-2xl mt-4 mx-3">
+           <p class="text-xl">title: ${book.title} </p>
+           <p class="text-xl p-2">author: ${book.author}</p>
+           <p class="text-xl p-2">pages: ${book.pages}</p>
+           <p class="text-xl p-2">description: ${book.description} </p>
+           
+           <label for="read">have you read it before</label>
+           <input type="checkbox" name="read" id="read">
+           <button data-index="${books.indexOf(book)}" class="bg-red-500 btn-new text-white mx-auto block px-3 py-2 rounded-lg mt-5" id="delete">delete</button>
+         </div>`
+         ) 
+         
+}
