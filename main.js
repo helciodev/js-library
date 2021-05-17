@@ -60,3 +60,11 @@ function displayBook(book) {
          ) 
          
 }
+
+window.addEventListener('click', function(e) {
+  console.log(e.target.attributes[0].value)
+  if(e.target.id == 'delete'){
+    booksWrapper.removeChild(e.target.parentNode)
+    books.splice(e.target.attributes[0].value, 1)
+  }
+})
