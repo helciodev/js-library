@@ -19,3 +19,10 @@ formParent.addEventListener('click', function() {
 this.classList.toggle('hidden')
 form.classList.toggle('get-down')
 })
+
+function makeBook(title, author, pages, description){
+   this.title = title
+   this.author = author
+   this.pages = pages
+   this.description = description
+ }
