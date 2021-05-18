@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js-library</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-200">
+  <div class="p-5 justify-center flex-col">
+    <h1 class="capitalize text-3xl text-center text-indigo-400">library app</h1>
+
+    
+      <button class="bg-blue-500 btn-new text-white mx-auto block px-3 py-2 rounded-lg mt-5" data-btn="1">new book</button>
+   
+      <div id="books" class="flex flex-wrap mt-5 p-4">
+        
+      </div>
+    <div class="p-4 form-parent absolute z-10 h-screen hidden flex justify-center items-center w-screen bg-red-500 w-1/2">   
+    </div>
+       <form action="" id="form" class="px-2 fixed form z-20 py-3 flex-col items-center w-1/2 bg-gray-500 mx-auto ">
+        <div>
+          <input type="text" id="title" class="px-1 py-1 my-2 block w-1/2 mx-auto focus:ring-2 focus:ring-blue-600" placeholder="Title:">
+        </div>
+        <div>
+          <input type="text" id="author" class="px-1 py-1 my-2 block w-1/2 mx-auto" placeholder="Author:">
+        </div>
+        <div>
+          <input type="text" id="pages" class="px-1 py-1 my-2 block w-1/2 mx-auto" placeholder="Number of pages:">
+        </div>
+        <div>
+          <div class="flex justify-center items-baseline">
+          <label for="read" class="text-white">have you read it before?</label>
+           <input class="w-4 h-4 ml-2" type="checkbox" name="read" id="read">
+          </div>
+        <button type="submit" id="add-btn" class="bg-blue-500 mb-3 btn-new text-white mx-auto block px-3 py-2 rounded-lg mt-5">Add book</button>
+       </form>
+       
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
